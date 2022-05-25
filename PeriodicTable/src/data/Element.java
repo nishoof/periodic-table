@@ -10,9 +10,20 @@ public class Element {
 	private int atomicNumber;
 	private String elementName;
 	
+	
 	public Element(int atomicNumber, String elementName) {
 		this.atomicNumber = atomicNumber;
 		this.elementName = elementName;
+	}
+
+
+	public int getAtomicNumber() {
+		return atomicNumber;
+	}
+
+
+	public String getElementName() {
+		return elementName;
 	}
 	
 }
