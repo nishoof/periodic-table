@@ -66,6 +66,8 @@ public class PeriodicTable {
 			elements[i-101][6] = new Element(i);
 		}
 		
+		// TODO: inner transition metals
+		
 	}
 	
 	/**

@@ -13,7 +13,7 @@ public class Element {
 	private int atomicNumber;
 	private String elementSymbol;
 	private String elementName;
-	private double averageAtomicMass;
+	private double averageAtomicMass;			// TODO: "most stable isotope"
 	
 	
 	/**
