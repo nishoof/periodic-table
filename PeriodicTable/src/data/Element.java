@@ -395,6 +395,52 @@ public class Element {
 				elementSymbol = "Rn";
 				averageAtomicMass = 222;
 				break;
+				
+			case 87:
+				elementName = "Francium";
+				elementSymbol = "Fr";
+				averageAtomicMass = 223;
+				break;
+			case 88:
+				elementName = "Radium";
+				elementSymbol = "Ra";
+				averageAtomicMass = 226;
+				break;
+			case 89:
+				elementName = "Actinium";
+				elementSymbol = "Ac";
+				averageAtomicMass = 227;
+				break;
+			case 104:
+				elementName = "Rutherfordium";
+				elementSymbol = "Rf";
+				averageAtomicMass = 261;
+				break;
+			case 105:
+				elementName = "Dubnium";
+				elementSymbol = "Db";
+				averageAtomicMass = 262;
+				break;
+			case 106:
+				elementName = "Seaborgium";
+				elementSymbol = "Sg";
+				averageAtomicMass = 266;
+				break;
+			case 107:
+				elementName = "Bohrium";
+				elementSymbol = "Bh";
+				averageAtomicMass = 264;
+				break;
+			case 108:
+				elementName = "Hassium";
+				elementSymbol = "Hs";
+				averageAtomicMass = 269;
+				break;
+			case 109:
+				elementName = "Meitnerium";
+				elementSymbol = "Mt";
+				averageAtomicMass = 268;
+				break;
 		}
 	}
 	
