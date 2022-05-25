@@ -1,6 +1,5 @@
 package core;
 
-import data.Element;
 import data.PeriodicTable;
 import processing.core.PApplet;
 
@@ -24,14 +23,6 @@ public class DrawingSurface extends PApplet {
 	 */
 	public void setup() {
 		
-		System.out.println("PERIODIC TABLE");
-		
-		for (Element element: periodicTable.getElements()) {
-			int atomicNumber = element.getAtomicNumber();
-			String name = element.getElementName();
-			System.out.println(String.format("%d: %s", atomicNumber, name));
-		}
-		
 	}
 	
 	/**
@@ -40,6 +31,8 @@ public class DrawingSurface extends PApplet {
 	public void draw() {
 		
 		background(255);
+		
+		periodicTable.draw(this);
 		
 	}
 	

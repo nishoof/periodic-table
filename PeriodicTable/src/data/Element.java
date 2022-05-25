@@ -1,5 +1,8 @@
 package data;
 
+import core.DrawingSurface;
+import processing.core.PConstants;
+
 /**
  * Represents an Element with an atomic number and an element name
  * 
@@ -56,6 +59,31 @@ public class Element {
 				this.elementName = "Neon";
 				break;
 		}
+	}
+	
+	/**
+	 * Draws this element as a box
+	 * 
+	 * @param surface
+	 * @param x the x-coordinate of the upper left corner of where to draw
+	 * @param y the y-coordinate of the upper left corner of where to draw
+	 * @param width the width of the box
+	 * @param height the height of the box
+	 */
+	public void draw(DrawingSurface surface, int x, int y, int width, int height) {
+		
+		surface.textAlign(PConstants.CENTER, PConstants.CENTER);
+		
+		surface.fill(255);
+		surface.rect(x, y, width, height);
+		
+		surface.fill(0);
+		surface.textSize(20);
+		surface.text(atomicNumber, (int)(x+(width/(100.0/50))), (int)(y+(height/(100.0/10))));
+		
+		surface.textSize(15);
+		surface.text(elementName, (int)(x+(width/(100.0/50))), (int)(y+(height/(100.0/85))));
+		
 	}
 
 
