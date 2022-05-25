@@ -651,7 +651,12 @@ public class Element {
 		surface.text(elementSymbol, (int)(x+(width/(100.0/50))), (int)(y+(height/(100.0/35))));
 		
 		// element name
-		surface.textSize((int)(smaller/(100.0/20)));
+		int textSize = (int)(smaller/(100.0/20));
+		surface.textSize(textSize);
+		while (surface.textWidth(elementName) >= width-4) {
+			textSize -= 1;
+			surface.textSize(textSize);
+		}
 		surface.text(elementName, (int)(x+(width/(100.0/50))), (int)(y+(height/(100.0/65))));
 		
 		// average atomic mass
