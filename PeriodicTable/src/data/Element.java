@@ -456,6 +456,161 @@ public class Element {
 				averageAtomicMass = 268;
 				mostStableIsotope = true;
 				break;
+				
+			case 58:
+				elementName = "Cerium";
+				elementSymbol = "Ce";
+				averageAtomicMass = 140.12;
+				break;
+			case 59:
+				elementName = "Praseodymium";
+				elementSymbol = "Pr";
+				averageAtomicMass = 140.91;
+				break;
+			case 60:
+				elementName = "Neodymium";
+				elementSymbol = "Nd";
+				averageAtomicMass = 144.24;
+				break;
+			case 61:
+				elementName = "Promethium";
+				elementSymbol = "Pm";
+				averageAtomicMass = 145;
+				mostStableIsotope = true;
+				break;
+			case 62:
+				elementName = "Samarium";
+				elementSymbol = "Sm";
+				averageAtomicMass = 150.36;
+				break;
+			case 63:
+				elementName = "Europium";
+				elementSymbol = "Eu";
+				averageAtomicMass = 151.96;
+				break;
+			case 64:
+				elementName = "Gadolinium";
+				elementSymbol = "Gd";
+				averageAtomicMass = 157.25;
+				break;
+			case 65:
+				elementName = "Terbium";
+				elementSymbol = "Tb";
+				averageAtomicMass = 158.93;
+				break;
+			case 66:
+				elementName = "Dysprosium";
+				elementSymbol = "Dy";
+				averageAtomicMass = 162.5;
+				break;
+			case 67:
+				elementName = "Holmium";
+				elementSymbol = "Ho";
+				averageAtomicMass = 164.93;
+				break;
+			case 68:
+				elementName = "Erbium";
+				elementSymbol = "Er";
+				averageAtomicMass = 167.26;
+				break;
+			case 69:
+				elementName = "Thulium";
+				elementSymbol = "Tm";
+				averageAtomicMass = 168.93;
+				break;
+			case 70:
+				elementName = "Ytterbium";
+				elementSymbol = "Yb";
+				averageAtomicMass = 173.04;
+				break;
+			case 71:
+				elementName = "Lutetium";
+				elementSymbol = "Lu";
+				averageAtomicMass = 174.97;
+				break;
+			
+			case 90:
+				elementName = "Thorium";
+				elementSymbol = "Th";
+				averageAtomicMass = 232.04;
+				break;
+			case 91:
+				elementName = "Protactinium";
+				elementSymbol = "Pa";
+				averageAtomicMass = 231.04;
+				break;
+			case 92:
+				elementName = "Uranium";
+				elementSymbol = "U";
+				averageAtomicMass = 238.03;
+				break;
+			case 93:
+				elementName = "Neptunium";
+				elementSymbol = "Np";
+				averageAtomicMass = 237.05;
+				mostStableIsotope = true;
+				break;
+			case 94:
+				elementName = "Plutonium";
+				elementSymbol = "Pu";
+				averageAtomicMass = 244;
+				mostStableIsotope = true;
+				break;
+			case 95:
+				elementName = "Americium";
+				elementSymbol = "Am";
+				averageAtomicMass = 243;
+				mostStableIsotope = true;
+				break;
+			case 96:
+				elementName = "Curium";
+				elementSymbol = "Cm";
+				averageAtomicMass = 247;
+				mostStableIsotope = true;
+				break;
+			case 97:
+				elementName = "Berkelium";
+				elementSymbol = "Bk";
+				averageAtomicMass = 247;
+				mostStableIsotope = true;
+				break;
+			case 98:
+				elementName = "Californium";
+				elementSymbol = "Cf";
+				averageAtomicMass = 251;
+				mostStableIsotope = true;
+				break;
+			case 99:
+				elementName = "Einsteinium";
+				elementSymbol = "Es";
+				averageAtomicMass = 252;
+				mostStableIsotope = true;
+				break;
+			case 100:
+				elementName = "Fermium";
+				elementSymbol = "Fm";
+				averageAtomicMass = 257;
+				mostStableIsotope = true;
+				break;
+			case 101:
+				elementName = "Mendelevium";
+				elementSymbol = "Md";
+				averageAtomicMass = 258;
+				mostStableIsotope = true;
+				break;
+			case 102:
+				elementName = "Nobelium";
+				elementSymbol = "No";
+				averageAtomicMass = 259;
+				mostStableIsotope = true;
+				break;
+			case 103:
+				elementName = "Lawrencium";
+				elementSymbol = "Lr";
+				averageAtomicMass = 262;
+				mostStableIsotope = true;
+				break;
+			
 		}
 	}
 	

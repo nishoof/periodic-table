@@ -10,7 +10,7 @@ import core.DrawingSurface;
 public class PeriodicTable {
 	
 	private final int COLUMNS = 18;
-	private final int ROWS = 7;
+	private final int ROWS = 7;			// does not include inner transition metals
 	
 	private Element[][] elements;
 	
@@ -20,7 +20,7 @@ public class PeriodicTable {
 	 */
 	public PeriodicTable() {
 		
-		elements = new Element[COLUMNS][ROWS];				// [x][y]
+		elements = new Element[COLUMNS][ROWS+2];				// [x][y]		// +2 for inner transition metals
 		
 		// row 1
 		elements[0][0] = new Element(1);
@@ -66,7 +66,13 @@ public class PeriodicTable {
 			elements[i-101][6] = new Element(i);
 		}
 		
-		// TODO: inner transition metals
+		// inner transition metals
+		for (int i = 58; i <= 71; i++) {
+			elements[i-58][7] = new Element(i);
+		}
+		for (int i = 90; i <= 103; i++) {
+			elements[i-90][8] = new Element(i);
+		}
 		
 	}
 	
@@ -80,11 +86,22 @@ public class PeriodicTable {
 		final int width = 53;
 		final int height = 60;
 		
+		// row 1-7
 		for (int i = 0; i < COLUMNS; i++) {
 			for (int j = 0; j < ROWS; j++) {
 				Element element = elements[i][j];
 				if (element != null) {
 					elements[i][j].draw(surface, i*width+10, j*height+10, width, height);
+				}
+			}
+		}
+		
+		// inner transition metals
+		for (int i = 0; i < COLUMNS-4; i++) {
+			for (int j = ROWS; j < ROWS+2; j++) {
+				Element element = elements[i][j];
+				if (element != null) {
+					elements[i][j].draw(surface, i*width+10, j*height+10+15, width, height);
 				}
 			}
 		}
