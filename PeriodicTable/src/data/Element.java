@@ -13,7 +13,8 @@ public class Element {
 	private int atomicNumber;
 	private String elementSymbol;
 	private String elementName;
-	private double averageAtomicMass;			// TODO: "most stable isotope"
+	private double averageAtomicMass;
+	private boolean mostStableIsotope;
 	
 	
 	/**
@@ -28,6 +29,7 @@ public class Element {
 			throw new IllegalArgumentException("Unknown atomic number " + atomicNumber);
 		
 		this.atomicNumber = atomicNumber;
+		mostStableIsotope = false;
 		
 		switch (atomicNumber) {
 			case 1:
@@ -247,7 +249,8 @@ public class Element {
 			case 43:
 				elementName = "Technetium";
 				elementSymbol = "Tc";
-				averageAtomicMass = 98.00;			// most stable isotope
+				averageAtomicMass = 98.00;
+				mostStableIsotope = true;
 				break;
 			case 44:
 				elementName = "Ruthenium";
@@ -384,62 +387,74 @@ public class Element {
 				elementName = "Polonium";
 				elementSymbol = "Po";
 				averageAtomicMass = 209;
+				mostStableIsotope = true;
 				break;
 			case 85:
 				elementName = "Astatine";
 				elementSymbol = "At";
 				averageAtomicMass = 210;
+				mostStableIsotope = true;
 				break;
 			case 86:
 				elementName = "Radon";
 				elementSymbol = "Rn";
 				averageAtomicMass = 222;
+				mostStableIsotope = true;
 				break;
 				
 			case 87:
 				elementName = "Francium";
 				elementSymbol = "Fr";
 				averageAtomicMass = 223;
+				mostStableIsotope = true;
 				break;
 			case 88:
 				elementName = "Radium";
 				elementSymbol = "Ra";
 				averageAtomicMass = 226;
+				mostStableIsotope = true;
 				break;
 			case 89:
 				elementName = "Actinium";
 				elementSymbol = "Ac";
 				averageAtomicMass = 227;
+				mostStableIsotope = true;
 				break;
 			case 104:
 				elementName = "Rutherfordium";
 				elementSymbol = "Rf";
 				averageAtomicMass = 261;
+				mostStableIsotope = true;
 				break;
 			case 105:
 				elementName = "Dubnium";
 				elementSymbol = "Db";
 				averageAtomicMass = 262;
+				mostStableIsotope = true;
 				break;
 			case 106:
 				elementName = "Seaborgium";
 				elementSymbol = "Sg";
 				averageAtomicMass = 266;
+				mostStableIsotope = true;
 				break;
 			case 107:
 				elementName = "Bohrium";
 				elementSymbol = "Bh";
 				averageAtomicMass = 264;
+				mostStableIsotope = true;
 				break;
 			case 108:
 				elementName = "Hassium";
 				elementSymbol = "Hs";
 				averageAtomicMass = 269;
+				mostStableIsotope = true;
 				break;
 			case 109:
 				elementName = "Meitnerium";
 				elementSymbol = "Mt";
 				averageAtomicMass = 268;
+				mostStableIsotope = true;
 				break;
 		}
 	}
@@ -486,7 +501,11 @@ public class Element {
 		
 		// average atomic mass
 		surface.textSize((int)(smaller/(100.0/20)));
-		surface.text(Double.toString(averageAtomicMass), (int)(x+(width/(100.0/50))), (int)(y+(height/(100.0/87))));
+		String str = Double.toString(averageAtomicMass);
+		if (mostStableIsotope) {
+			str = String.format("(%s)", str.substring(0,str.length()-2));			// if it refers to the most stable isotope, put it in parenthesis  |  "(98)" instead of "98.0")
+		}
+		surface.text(str, (int)(x+(width/(100.0/50))), (int)(y+(height/(100.0/87))));
 		
 	}
 	
