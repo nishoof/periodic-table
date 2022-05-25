@@ -11,7 +11,9 @@ import processing.core.PConstants;
 public class Element {
 	
 	private int atomicNumber;
+	private String elementSymbol;
 	private String elementName;
+	private double averageAtomicMass;
 	
 	
 	/**
@@ -29,34 +31,54 @@ public class Element {
 		
 		switch (atomicNumber) {
 			case 1:
-				this.elementName = "Hydrogen";
+				elementName = "Hydrogen";
+				elementSymbol = "H";
+				averageAtomicMass = 1.01;
 				break;
 			case 2:
-				this.elementName = "Helium";
+				elementName = "Helium";
+				elementSymbol = "He";
+				averageAtomicMass = 4.00;
 				break;
 			case 3:
-				this.elementName = "Lithium";
+				elementName = "Lithium";
+				elementSymbol = "Li";
+				averageAtomicMass = 6.94;
 				break;
 			case 4:
-				this.elementName = "Beryllium";
+				elementName = "Beryllium";
+				elementSymbol = "Be";
+				averageAtomicMass = 9.01;
 				break;
 			case 5:
-				this.elementName = "Boron";
+				elementName = "Boron";
+				elementSymbol = "B";
+				averageAtomicMass = 10.81;
 				break;
 			case 6:
-				this.elementName = "Carbon";
+				elementName = "Carbon";
+				elementSymbol = "C";
+				averageAtomicMass = 12.01;
 				break;
 			case 7:
-				this.elementName = "Nitrogen";
+				elementName = "Nitrogen";
+				elementSymbol = "N";
+				averageAtomicMass = 14.01;
 				break;
 			case 8:
-				this.elementName = "Oxygen";
+				elementName = "Oxygen";
+				elementSymbol = "O";
+				averageAtomicMass = 16.00;
 				break;
 			case 9:
-				this.elementName = "Fluorine";
+				elementName = "Fluorine";
+				elementSymbol = "F";
+				averageAtomicMass = 19.00;
 				break;
 			case 10:
-				this.elementName = "Neon";
+				elementName = "Neon";
+				elementSymbol = "Ne";
+				averageAtomicMass = 20.18;
 				break;
 		}
 	}
@@ -74,26 +96,27 @@ public class Element {
 		
 		surface.textAlign(PConstants.CENTER, PConstants.CENTER);
 		
+		// outer box
 		surface.fill(255);
 		surface.rect(x, y, width, height);
 		
+		// atomic number
 		surface.fill(0);
-		surface.textSize(20);
+		surface.textSize(15);
 		surface.text(atomicNumber, (int)(x+(width/(100.0/50))), (int)(y+(height/(100.0/10))));
 		
-		surface.textSize(15);
-		surface.text(elementName, (int)(x+(width/(100.0/50))), (int)(y+(height/(100.0/85))));
+		// element symbol
+		surface.textSize(30);
+		surface.text(elementSymbol, (int)(x+(width/(100.0/50))), (int)(y+(height/(100.0/40))));
 		
-	}
-
-
-	public int getAtomicNumber() {
-		return atomicNumber;
-	}
-
-
-	public String getElementName() {
-		return elementName;
+		// element name
+		surface.textSize(15);
+		surface.text(elementName, (int)(x+(width/(100.0/50))), (int)(y+(height/(100.0/70))));
+		
+		// average atomic mass
+		surface.textSize(10);
+		surface.text(Double.toString(averageAtomicMass), (int)(x+(width/(100.0/50))), (int)(y+(height/(100.0/90))));
+		
 	}
 	
 }
