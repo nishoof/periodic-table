@@ -9,7 +9,10 @@ import core.DrawingSurface;
  */
 public class PeriodicTable {
 	
-	private Element[] elements;
+	private final int COLUMNS = 18;
+	private final int ROWS = 2;
+	
+	private Element[][] elements;
 	
 	
 	/**
@@ -17,12 +20,17 @@ public class PeriodicTable {
 	 */
 	public PeriodicTable() {
 		
-		final int numElements = 10;
+		elements = new Element[COLUMNS][ROWS];				// [x][y]
 		
-		elements = new Element[numElements];
+		/// row 1
+		elements[0][0] = new Element(1);
+		elements[17][0] = new Element(2);
 		
-		for (int i = 0; i < numElements; i++) {
-			elements[i] = new Element(i+1);
+		// row 2
+		elements[0][1] = new Element(3);
+		elements[1][1] = new Element(4);
+		for (int i = 5; i < 11; i++) {
+			elements[i+7][1] = new Element(i);
 		}
 		
 	}
@@ -34,26 +42,27 @@ public class PeriodicTable {
 	 */
 	public void draw(DrawingSurface surface) {
 		
-		int i = 0;
-		final int width = 90;
-		final int height = 90;
-		for (int y = 10; y < 500; y += height+10) {
-			for (int x = 10; x < 750; x += width+10) {
-				if (i == 10) break;
-				elements[i].draw(surface, x, y, width, height);
-				i++;
+		final int width = 53;
+		final int height = 60;
+		
+		for (int i = 0; i < COLUMNS; i++) {
+			for (int j = 0; j < ROWS; j++) {
+				Element element = elements[i][j];
+				if (element != null) {
+//					System.out.println(Integer.toString(i*width+10) + "           " + element);
+					elements[i][j].draw(surface, i*width+10, j*height+10, width, height);
+				}
 			}
-			if (i == 11) break;
 		}
 		
 	}
 	
 	/**
-	 * Returns a list of the elements in this PeriodicTable
+	 * Returns a 2D array of the elements in this PeriodicTable
 	 * 
-	 * @return a list of the elements in this PeriodicTable
+	 * @return a 2D array of the elements in this PeriodicTable
 	 */
-	public Element[] getElements() {
+	public Element[][] getElements() {
 		return this.elements;
 	}
 	
