@@ -96,26 +96,30 @@ public class Element {
 		
 		surface.textAlign(PConstants.CENTER, PConstants.CENTER);
 		
+		int smaller = width;
+		if (height < width)
+			smaller = height;
+		
 		// outer box
 		surface.fill(255);
 		surface.rect(x, y, width, height);
 		
 		// atomic number
 		surface.fill(0);
-		surface.textSize(15);
-		surface.text(atomicNumber, (int)(x+(width/(100.0/50))), (int)(y+(height/(100.0/10))));
+		surface.textSize((int)(smaller/(100.0/20)));
+		surface.text(atomicNumber, (int)(x+(width/(100.0/50))), (int)(y+(height/(100.0/12))));
 		
 		// element symbol
-		surface.textSize(30);
-		surface.text(elementSymbol, (int)(x+(width/(100.0/50))), (int)(y+(height/(100.0/40))));
+		surface.textSize((int)(smaller/(100.0/30)));
+		surface.text(elementSymbol, (int)(x+(width/(100.0/50))), (int)(y+(height/(100.0/35))));
 		
 		// element name
-		surface.textSize(15);
-		surface.text(elementName, (int)(x+(width/(100.0/50))), (int)(y+(height/(100.0/70))));
+		surface.textSize((int)(smaller/(100.0/20)));
+		surface.text(elementName, (int)(x+(width/(100.0/50))), (int)(y+(height/(100.0/65))));
 		
 		// average atomic mass
-		surface.textSize(10);
-		surface.text(Double.toString(averageAtomicMass), (int)(x+(width/(100.0/50))), (int)(y+(height/(100.0/90))));
+		surface.textSize((int)(smaller/(100.0/20)));
+		surface.text(Double.toString(averageAtomicMass), (int)(x+(width/(100.0/50))), (int)(y+(height/(100.0/87))));
 		
 	}
 	
