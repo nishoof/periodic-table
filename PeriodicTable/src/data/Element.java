@@ -19,12 +19,12 @@ public class Element {
 	/**
 	 * Constructs a new Element using an atomic number
 	 * 
-	 * @param atomicNumber atomic number for the element, in the range [1, 10]
+	 * @param atomicNumber atomic number for the element, in the range [1, 36]
 	 * @throws IllegalArgumentException if atomicNumber is not in the provided range
 	 */
 	public Element(int atomicNumber) {
 		
-		if (atomicNumber < 1 || atomicNumber > 10)
+		if (atomicNumber < 1 || atomicNumber > 36)
 			throw new IllegalArgumentException("Unknown atomic number " + atomicNumber);
 		
 		this.atomicNumber = atomicNumber;
@@ -80,6 +80,137 @@ public class Element {
 				elementSymbol = "Ne";
 				averageAtomicMass = 20.18;
 				break;
+			case 11:
+				elementName = "Sodium";
+				elementSymbol = "Na";
+				averageAtomicMass = 22.99;
+				break;
+			case 12:
+				elementName = "Magnesium";
+				elementSymbol = "Mg";
+				averageAtomicMass = 24.31;
+				break;
+			case 13:
+				elementName = "Aluminum";
+				elementSymbol = "Al";
+				averageAtomicMass = 26.98;
+				break;
+			case 14:
+				elementName = "Silicon";
+				elementSymbol = "Si";
+				averageAtomicMass = 28.09;
+				break;
+			case 15:
+				elementName = "Phosphorus";
+				elementSymbol = "P";
+				averageAtomicMass = 30.97;
+				break;
+			case 16:
+				elementName = "Sulfur";
+				elementSymbol = "S";
+				averageAtomicMass = 32.07;
+				break;
+			case 17:
+				elementName = "Chlorine";
+				elementSymbol = "Cl";
+				averageAtomicMass = 35.45;
+				break;
+			case 18:
+				elementName = "Argon";
+				elementSymbol = "Ar";
+				averageAtomicMass = 39.95;
+				break;
+			case 19:
+				elementName = "Potassium";
+				elementSymbol = "K";
+				averageAtomicMass = 39.10;
+				break;
+			case 20:
+				elementName = "Calcium";
+				elementSymbol = "Ca";
+				averageAtomicMass = 40.08;
+				break;
+			case 21:
+				elementName = "Scandium";
+				elementSymbol = "Sc";
+				averageAtomicMass = 44.96;
+				break;
+			case 22:
+				elementName = "Titanium";
+				elementSymbol = "Ti";
+				averageAtomicMass = 47.87;
+				break;
+			case 23:
+				elementName = "Vanadium";
+				elementSymbol = "V";
+				averageAtomicMass = 50.94;
+				break;
+			case 24:
+				elementName = "Chromium";
+				elementSymbol = "Cr";
+				averageAtomicMass = 52.00;
+				break;
+			case 25:
+				elementName = "Manganese";
+				elementSymbol = "Mn";
+				averageAtomicMass = 54.94;
+				break;
+			case 26:
+				elementName = "Iron";
+				elementSymbol = "Fe";
+				averageAtomicMass = 55.85;
+				break;
+			case 27:
+				elementName = "Cobalt";
+				elementSymbol = "Co";
+				averageAtomicMass = 58.93;
+				break;
+			case 28:
+				elementName = "Nickel";
+				elementSymbol = "Ni";
+				averageAtomicMass = 58.69;
+				break;
+			case 29:
+				elementName = "Copper";
+				elementSymbol = "Cu";
+				averageAtomicMass = 63.55;
+				break;
+			case 30:
+				elementName = "Zinc";
+				elementSymbol = "Zn";
+				averageAtomicMass = 65.39;
+				break;
+			case 31:
+				elementName = "Gallium";
+				elementSymbol = "Ga";
+				averageAtomicMass = 69.72;
+				break;
+			case 32:
+				elementName = "Germanium";
+				elementSymbol = "Ge";
+				averageAtomicMass = 72.61;
+				break;
+			case 33:
+				elementName = "Arsenic";
+				elementSymbol = "As";
+				averageAtomicMass = 74.92;
+				break;
+			case 34:
+				elementName = "Selenium";
+				elementSymbol = "Se";
+				averageAtomicMass = 78.96;
+				break;
+			case 35:
+				elementName = "Bromine";
+				elementSymbol = "Br";
+				averageAtomicMass = 79.90;
+				break;
+			case 36:
+				elementName = "Krypton";
+				elementSymbol = "Kr";
+				averageAtomicMass = 83.80;
+				break;
+			
 		}
 	}
 	

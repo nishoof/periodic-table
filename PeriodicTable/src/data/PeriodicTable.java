@@ -10,7 +10,7 @@ import core.DrawingSurface;
 public class PeriodicTable {
 	
 	private final int COLUMNS = 18;
-	private final int ROWS = 2;
+	private final int ROWS = 7;
 	
 	private Element[][] elements;
 	
@@ -29,8 +29,20 @@ public class PeriodicTable {
 		// row 2
 		elements[0][1] = new Element(3);
 		elements[1][1] = new Element(4);
-		for (int i = 5; i < 11; i++) {
+		for (int i = 5; i <= 10; i++) {
 			elements[i+7][1] = new Element(i);
+		}
+		
+		// row 3
+		elements[0][2] = new Element(11);
+		elements[1][2] = new Element(12);
+		for (int i = 13; i <= 18; i++) {
+			elements[i-1][2] = new Element(i);
+		}
+		
+		// row 4
+		for (int i = 19; i <= 36; i++) {
+			elements[i-19][3] = new Element(i);
 		}
 		
 	}
