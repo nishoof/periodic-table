@@ -15,10 +15,13 @@ public class PeriodicTable {
 	 */
 	public PeriodicTable() {
 		
-		elements = new Element[2];
+		final int numElements = 10;
 		
-		elements[0] = new Element(1, "Hydrogen");
-		elements[1] = new Element(2, "Helium");
+		elements = new Element[numElements];
+		
+		for (int i = 0; i < numElements; i++) {
+			elements[i] = new Element(i+1);
+		}
 		
 	}
 	

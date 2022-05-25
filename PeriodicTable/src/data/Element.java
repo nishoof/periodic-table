@@ -11,9 +11,51 @@ public class Element {
 	private String elementName;
 	
 	
-	public Element(int atomicNumber, String elementName) {
+	/**
+	 * Constructs a new Element using an atomic number
+	 * 
+	 * @param atomicNumber atomic number for the element, in the range [1, 10]
+	 * @throws IllegalArgumentException if atomicNumber is not in the provided range
+	 */
+	public Element(int atomicNumber) {
+		
+		if (atomicNumber < 1 || atomicNumber > 10)
+			throw new IllegalArgumentException("Unknown atomic number " + atomicNumber);
+		
 		this.atomicNumber = atomicNumber;
-		this.elementName = elementName;
+		
+		switch (atomicNumber) {
+			case 1:
+				this.elementName = "Hydrogen";
+				break;
+			case 2:
+				this.elementName = "Helium";
+				break;
+			case 3:
+				this.elementName = "Lithium";
+				break;
+			case 4:
+				this.elementName = "Beryllium";
+				break;
+			case 5:
+				this.elementName = "Boron";
+				break;
+			case 6:
+				this.elementName = "Carbon";
+				break;
+			case 7:
+				this.elementName = "Nitrogen";
+				break;
+			case 8:
+				this.elementName = "Oxygen";
+				break;
+			case 9:
+				this.elementName = "Fluorine";
+				break;
+			case 10:
+				this.elementName = "Neon";
+				break;
+		}
 	}
 
 
