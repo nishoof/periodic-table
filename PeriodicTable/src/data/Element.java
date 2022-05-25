@@ -19,12 +19,12 @@ public class Element {
 	/**
 	 * Constructs a new Element using an atomic number
 	 * 
-	 * @param atomicNumber atomic number for the element, in the range [1, 36]
+	 * @param atomicNumber atomic number for the element, in the range [1, 54]
 	 * @throws IllegalArgumentException if atomicNumber is not in the provided range
 	 */
 	public Element(int atomicNumber) {
 		
-		if (atomicNumber < 1 || atomicNumber > 36)
+		if (atomicNumber < 1 || atomicNumber > 54)
 			throw new IllegalArgumentException("Unknown atomic number " + atomicNumber);
 		
 		this.atomicNumber = atomicNumber;
@@ -210,7 +210,96 @@ public class Element {
 				elementSymbol = "Kr";
 				averageAtomicMass = 83.80;
 				break;
-			
+			case 37:
+				elementName = "Rubidium";
+				elementSymbol = "Rb";
+				averageAtomicMass = 85.47;
+				break;
+			case 38:
+				elementName = "Strontium";
+				elementSymbol = "Sr";
+				averageAtomicMass = 87.62;
+				break;
+			case 39:
+				elementName = "Yttrium";
+				elementSymbol = "Y";
+				averageAtomicMass = 88.91;
+				break;
+			case 40:
+				elementName = "Zirconium";
+				elementSymbol = "Zr";
+				averageAtomicMass = 91.22;
+				break;
+			case 41:
+				elementName = "Niobium";
+				elementSymbol = "Nb";
+				averageAtomicMass = 92.91;
+				break;
+			case 42:
+				elementName = "Molybdenum";
+				elementSymbol = "Mo";
+				averageAtomicMass = 95.94;
+				break;
+			case 43:
+				elementName = "Technetium";
+				elementSymbol = "Tc";
+				averageAtomicMass = 98.00;			// most stable isotope
+				break;
+			case 44:
+				elementName = "Ruthenium";
+				elementSymbol = "Ru";
+				averageAtomicMass = 101.07;
+				break;
+			case 45:
+				elementName = "Rhodium";
+				elementSymbol = "Rh";
+				averageAtomicMass = 102.91;
+				break;
+			case 46:
+				elementName = "Palladium";
+				elementSymbol = "Pd";
+				averageAtomicMass = 106.42;
+				break;
+			case 47:
+				elementName = "Silver";
+				elementSymbol = "Ag";
+				averageAtomicMass = 107.87;
+				break;
+			case 48:
+				elementName = "Cadmium";
+				elementSymbol = "Cd";
+				averageAtomicMass = 112.41;
+				break;
+			case 49:
+				elementName = "Indium";
+				elementSymbol = "In";
+				averageAtomicMass = 114.82;
+				break;
+			case 50:
+				elementName = "Tin";
+				elementSymbol = "Sn";
+				averageAtomicMass = 118.71;
+				break;
+			case 51:
+				elementName = "Antimony";
+				elementSymbol = "Sb";
+				averageAtomicMass = 121.76;
+				break;
+			case 52:
+				elementName = "Tellurium";
+				elementSymbol = "Te";
+				averageAtomicMass = 127.60;
+				break;
+			case 53:
+				elementName = "Iodine";
+				elementSymbol = "I";
+				averageAtomicMass = 126.90;
+				break;
+			case 54:
+				elementName = "Xenon";
+				elementSymbol = "Xe";
+				averageAtomicMass = 131.29;
+				break;
 		}
 	}
 	

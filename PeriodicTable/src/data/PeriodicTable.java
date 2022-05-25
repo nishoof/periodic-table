@@ -45,6 +45,11 @@ public class PeriodicTable {
 			elements[i-19][3] = new Element(i);
 		}
 		
+		// row 5
+		for (int i = 37; i <= 54; i++) {
+			elements[i-37][4] = new Element(i);
+		}
+		
 	}
 	
 	/**
