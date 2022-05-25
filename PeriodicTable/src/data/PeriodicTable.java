@@ -22,7 +22,7 @@ public class PeriodicTable {
 		
 		elements = new Element[COLUMNS][ROWS];				// [x][y]
 		
-		/// row 1
+		// row 1
 		elements[0][0] = new Element(1);
 		elements[17][0] = new Element(2);
 		
@@ -49,7 +49,6 @@ public class PeriodicTable {
 			for (int j = 0; j < ROWS; j++) {
 				Element element = elements[i][j];
 				if (element != null) {
-//					System.out.println(Integer.toString(i*width+10) + "           " + element);
 					elements[i][j].draw(surface, i*width+10, j*height+10, width, height);
 				}
 			}

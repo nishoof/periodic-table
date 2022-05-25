@@ -94,8 +94,14 @@ public class Element {
 	 */
 	public void draw(DrawingSurface surface, int x, int y, int width, int height) {
 		
+		/**
+		 * For resizing, numbers are calculated like this: (int)(x+(width/(100.0/50)))
+		 * Just change the last value (50 in the example) when adjusting.
+		 */
+		
 		surface.textAlign(PConstants.CENTER, PConstants.CENTER);
 		
+		// smaller = the smaller value between width and height
 		int smaller = width;
 		if (height < width)
 			smaller = height;
