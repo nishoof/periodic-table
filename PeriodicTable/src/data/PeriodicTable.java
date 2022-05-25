@@ -50,6 +50,14 @@ public class PeriodicTable {
 			elements[i-37][4] = new Element(i);
 		}
 		
+		// row 6
+		for (int i = 55; i <= 57; i++) {
+			elements[i-55][5] = new Element(i);
+		}
+		for (int i = 72; i <= 86; i++) {
+			elements[i-69][5] = new Element(i);
+		}
+		
 	}
 	
 	/**
