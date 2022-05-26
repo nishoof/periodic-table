@@ -2,13 +2,14 @@ package screens;
 
 import core.DrawingSurface;
 import data.Element;
+import processing.core.PConstants;
 
 /**
- * Represents a Periodic Table which holds Elements
+ * Represents a PeriodicTable Screen with a periodic table displaying elements.
  * 
  * @author nishoof
  */
-public class PeriodicTableScreen extends Screen {
+public class PeriodicTable extends Screen {
 
 	private final int COLUMNS = 18;
 	private final int ROWS = 7;			// does not include inner transition metals
@@ -21,7 +22,7 @@ public class PeriodicTableScreen extends Screen {
 	 * 
 	 * @param surface the DrawingSurface to use. Should not be null.
 	 */
-	public PeriodicTableScreen(DrawingSurface surface) {
+	public PeriodicTable(DrawingSurface surface) {
 		
 		super(surface);
 
@@ -86,6 +87,7 @@ public class PeriodicTableScreen extends Screen {
 	 * After this is run, the following surface values may be changed:
 	 * -	fill
 	 * -	strokeWeight
+	 * -	rectMode
 	 * -	values specified in Element.draw()
 	 */
 	public void draw() {
@@ -104,6 +106,8 @@ public class PeriodicTableScreen extends Screen {
 		
 
 		surface.background(230);
+		surface.rectMode(PConstants.CORNER);
+		
 
 		// row 1-7
 		for (int i = 0; i < COLUMNS; i++) {
