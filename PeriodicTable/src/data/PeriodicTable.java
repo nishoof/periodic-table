@@ -84,7 +84,7 @@ public class PeriodicTable {
 	public void draw(DrawingSurface surface) {
 		
 		final int width = 53;
-		final int height = 60;
+		final int height = 58;
 		
 		// row 1-7
 		for (int i = 0; i < COLUMNS; i++) {

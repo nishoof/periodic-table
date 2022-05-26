@@ -17,12 +17,15 @@ public class DrawingSurface extends PApplet {
 		periodicTable = new PeriodicTable();
 	}
 	
+	public void settings() {
+	  size(1200, 600);
+	}
 	
 	/**
 	 * Called once when the program starts
 	 */
 	public void setup() {
-		
+		windowResizable(false);
 	}
 	
 	/**
