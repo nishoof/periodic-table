@@ -1,20 +1,23 @@
 package core;
 
-import data.PeriodicTable;
 import processing.core.PApplet;
+import screens.PeriodicTableScreen;
+import screens.Screen;
 
 /**
  * @author nishoof
  */
 public class DrawingSurface extends PApplet {
 	
-	private PeriodicTable periodicTable;
+	private Screen currentScreen;			// the current screen being used
+	private Screen periodicTable;
 	
 	/**
 	 * Constructs a new DrawingSurface
 	 */
 	public DrawingSurface() {
-		periodicTable = new PeriodicTable();
+		periodicTable = new PeriodicTableScreen(this);
+		currentScreen = periodicTable;
 	}
 	
 	public void settings() {
@@ -32,10 +35,10 @@ public class DrawingSurface extends PApplet {
 	 * Draws to the window
 	 */
 	public void draw() {
+
+		if (currentScreen == null) return;
 		
-		background(230);
-		
-		periodicTable.draw(this);
+		currentScreen.draw();
 		
 	}
 	
