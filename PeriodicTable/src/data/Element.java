@@ -615,7 +615,12 @@ public class Element {
 	}
 	
 	/**
-	 * Draws this element as a box
+	 * Draws this element as a box.
+	 * After this is run, the following surface values may be changed:
+	 * -	fill
+	 * -	strokeWeight
+	 * -	textAlign
+	 * -	textSize
 	 * 
 	 * @param surface
 	 * @param x the x-coordinate of the upper left corner of where to draw
@@ -631,6 +636,7 @@ public class Element {
 		 */
 		
 		surface.textAlign(PConstants.CENTER, PConstants.CENTER);
+		surface.strokeWeight(1);
 		
 		// smaller = the smaller value between width and height
 		int smaller = width;

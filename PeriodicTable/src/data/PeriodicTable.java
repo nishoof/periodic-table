@@ -78,20 +78,34 @@ public class PeriodicTable {
 	
 	/**
 	 * Draws this PeriodicTable to surface
+	 * After this is run, the following surface values may be changed:
+	 * -	fill
+	 * -	strokeWeight
+	 * -	values specified in Element.draw()
 	 * 
 	 * @param surface the DrawingSurface to draw with
 	 */
 	public void draw(DrawingSurface surface) {
 		
+		// width and height of an individual element box 
 		final int width = 53;
 		final int height = 58;
+		
+		// offset for the full periodic table
+		final int x = 10;
+		final int y = 10;
+		
+		// offset for the inner transition metals (not counting the initial offset from x and y)
+		final int x2 = width*4;
+		final int y2 = 20;
+		
 		
 		// row 1-7
 		for (int i = 0; i < COLUMNS; i++) {
 			for (int j = 0; j < ROWS; j++) {
 				Element element = elements[i][j];
 				if (element != null) {
-					elements[i][j].draw(surface, i*width+10, j*height+10, width, height);
+					elements[i][j].draw(surface, i*width+x, j*height+y, width, height);
 				}
 			}
 		}
@@ -101,10 +115,21 @@ public class PeriodicTable {
 			for (int j = ROWS; j < ROWS+2; j++) {
 				Element element = elements[i][j];
 				if (element != null) {
-					elements[i][j].draw(surface, i*width+10, j*height+10+15, width, height);
+					elements[i][j].draw(surface, i*width+x+x2, j*height+y+y2, width, height);
 				}
 			}
 		}
+		
+		// black polygon for inner transition metals
+		final int rectWidth = 4;
+		final int extend = 5;
+		surface.strokeWeight(0);
+		surface.fill(0);
+		surface.rect(x + width*3 - rectWidth/2, y + height*5, rectWidth, height*2 + extend);
+		surface.quad(x + width*3 - rectWidth/2, y + height*7 + extend, 
+				     x + width*3 + rectWidth/2, y + height*7 + extend, 
+				     x + width*4, y + height*7 + y2,
+				     x + width*4, y + height*9 + y2);
 		
 	}
 	

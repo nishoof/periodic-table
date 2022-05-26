@@ -33,7 +33,7 @@ public class DrawingSurface extends PApplet {
 	 */
 	public void draw() {
 		
-		background(255);
+		background(230);
 		
 		periodicTable.draw(this);
 		
