@@ -10,16 +10,19 @@ import screens.Screen;
  */
 public class DrawingSurface extends PApplet {
 	
-	private Screen currentScreen;			// the current screen being used
-	private Screen menu;
-	private Screen periodicTable;
+	private Screen currentScreen;				// the current screen being used
+	private Screen menu;						public final static int menuID = 0;
+	private Screen periodicTable;				public final static int periodicTableID = 1;
 	
 
 	/**
 	 * Constructs a new DrawingSurface
 	 */
 	public DrawingSurface() {
+		menu = new Menu(this);
+		periodicTable = new PeriodicTable(this);
 
+		currentScreen = menu;
 	}
 	
 
@@ -33,11 +36,6 @@ public class DrawingSurface extends PApplet {
 	public void setup() {
 		
 		windowResizable(false);
-
-		periodicTable = new PeriodicTable(this);
-		menu = new Menu(this);
-
-		currentScreen = menu;
 
 	}
 	
@@ -58,6 +56,10 @@ public class DrawingSurface extends PApplet {
 
 	}
 
+	public void mouseMoved() {
+		currentScreen.mouseMoved();
+	}
+
 	/**
 	 * Switches the currentScreen to a different Screen based on screenCode
 	 * 0 - menu
@@ -69,10 +71,10 @@ public class DrawingSurface extends PApplet {
 		switch (screenCode) {
 			case 0:
 				currentScreen = menu;
+				break;
 			case 1:
 				currentScreen = periodicTable;
-			default:
-				System.err.println("Unknwon screenCode " + screenCode);
+				break;
 		}
 	}
 	

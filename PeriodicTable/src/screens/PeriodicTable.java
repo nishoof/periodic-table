@@ -1,20 +1,27 @@
 package screens;
 
 import core.DrawingSurface;
-import data.Element;
+import nish.processing.Button;
 import processing.core.PConstants;
+
+import data.Element;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Represents a PeriodicTable Screen with a periodic table displaying elements.
  * 
  * @author nishoof
  */
-public class PeriodicTable extends Screen {
+public class PeriodicTable extends Screen implements ActionListener {
 
 	private final int COLUMNS = 18;
 	private final int ROWS = 7;			// does not include inner transition metals
 	
 	private Element[][] elements;
+
+	private Button backButton;
 	
 	
 	/**
@@ -79,6 +86,13 @@ public class PeriodicTable extends Screen {
 		for (int i = 90; i <= 103; i++) {
 			elements[i-90][8] = new Element(i);
 		}
+
+		// back Button
+		backButton = new Button(0, 550, 50, 50, this);
+		backButton.setStrokeWeight(0);
+		backButton.setOpacity(0);
+		backButton.setHoveringOpacity(0);
+		backButton.setText("<");
 		
 	}
 	
@@ -91,24 +105,26 @@ public class PeriodicTable extends Screen {
 	 * -	values specified in Element.draw()
 	 */
 	public void draw() {
-		
+
 		// width and height of an individual element box 
 		final int width = 53;
 		final int height = 58;
 		
 		// offset for the full periodic table
-		final int x = 10;
-		final int y = 10;
+		final int x = 20;
+		final int y = 30;
 		
 		// offset for the inner transition metals (not counting the initial offset from x and y)
 		final int x2 = width*4;
-		final int y2 = 20;
-		
+		final int y2 = 20;		
 
+
+		surface.strokeWeight(1);
 		surface.background(230);
+		surface.stroke(0);
 		surface.rectMode(PConstants.CORNER);
 		
-
+		
 		// row 1-7
 		for (int i = 0; i < COLUMNS; i++) {
 			for (int j = 0; j < ROWS; j++) {
@@ -140,6 +156,10 @@ public class PeriodicTable extends Screen {
 				     x + width*4, y + height*7 + y2,
 				     x + width*4, y + height*9 + y2);
 		
+		// back Button
+		surface.textSize(20);
+		backButton.draw(surface);
+		
 	}
 	
 	/**
@@ -150,5 +170,32 @@ public class PeriodicTable extends Screen {
 	public Element[][] getElements() {
 		return this.elements;
 	}
+
+	/**
+     * Called once after every time a mouse button is pressed.
+     */
+    public void mousePressed() {
+        backButton.mousePressed(surface.mouseX, surface.mouseY, surface.mouseButton);
+    }
+
+    /**
+     * Called every time the mouse moves and a mouse button is not pressed.
+     */
+    public void mouseMoved() {
+        backButton.mouseMoved(surface.mouseX, surface.mouseY);
+    }
+
+	/**
+     * Invoked when an action occurs.
+     * 
+     * @param actionEvent the ActionEvent representing the action that occurred
+     */
+    public void actionPerformed(ActionEvent actionEvent) {
+        if (actionEvent.getSource().equals(backButton)) {
+            if (actionEvent.getID() == Button.LEFT_CLICK) {
+                surface.switchScreen(DrawingSurface.menuID);
+            }
+        }
+    }
 	
 }
