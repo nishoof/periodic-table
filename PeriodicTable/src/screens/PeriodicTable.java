@@ -22,6 +22,8 @@ public class PeriodicTable extends Screen implements ActionListener {
 	private Element[][] elements;
 
 	private Button backButton;
+
+	private int highlighted;
 	
 	
 	/**
@@ -93,6 +95,9 @@ public class PeriodicTable extends Screen implements ActionListener {
 		backButton.setOpacity(0);
 		backButton.setHoveringOpacity(0);
 		backButton.setText("<");
+
+		// other
+		highlighted = 6;
 		
 	}
 	
@@ -105,6 +110,10 @@ public class PeriodicTable extends Screen implements ActionListener {
 	 * -	values specified in Element.draw()
 	 */
 	public void draw() {
+
+		// updateHighlighted(6);
+		// int highlightCol = (int) highlighted.getX();
+		// int highlightRow = (int) highlighted.getY();
 
 		// width and height of an individual element box 
 		final int width = 53;
@@ -124,13 +133,13 @@ public class PeriodicTable extends Screen implements ActionListener {
 		surface.stroke(0);
 		surface.rectMode(PConstants.CORNER);
 		
-		
+
 		// row 1-7
 		for (int i = 0; i < COLUMNS; i++) {
 			for (int j = 0; j < ROWS; j++) {
 				Element element = elements[i][j];
 				if (element != null) {
-					elements[i][j].draw(surface, i*width+x, j*height+y, width, height);
+					element.draw(surface, i*width+x, j*height+y, width, height, element.getAtomicNumber() == highlighted);
 				}
 			}
 		}
@@ -140,7 +149,7 @@ public class PeriodicTable extends Screen implements ActionListener {
 			for (int j = ROWS; j < ROWS+2; j++) {
 				Element element = elements[i][j];
 				if (element != null) {
-					elements[i][j].draw(surface, i*width+x+x2, j*height+y+y2, width, height);
+					elements[i][j].draw(surface, i*width+x+x2, j*height+y+y2, width, height, element.getAtomicNumber() == highlighted);
 				}
 			}
 		}
@@ -159,6 +168,9 @@ public class PeriodicTable extends Screen implements ActionListener {
 		// back Button
 		surface.textSize(20);
 		backButton.draw(surface);
+
+
+		// highlight(x + width*highlightCol, y + height*highlightRow, width, height);
 		
 	}
 	
@@ -198,4 +210,27 @@ public class PeriodicTable extends Screen implements ActionListener {
         }
     }
 	
+	// private void updateHighlighted(String str) {
+	// 	for (int col = 0; col < COLUMNS; col++) {
+	// 		for (int row = 0; row < ROWS; row++) {
+	// 			Element element = elements[col][row];
+	// 			if (element != null) {
+	// 				if (element.getSymbol().matches(str)) {
+	// 					highlighted = new Point(col, row);
+	// 					// System.out.println(String.format("(%s, %s)", col, row));
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// }
+
+	// private void highlight(int x, int y, int width, int height) {
+	// 	surface.pushStyle();
+
+	// 	surface.fill(253, 255, 50, 200);
+	// 	surface.rect(x, y, width, height);
+
+	// 	surface.popStyle();
+	// }
+
 }

@@ -629,6 +629,34 @@ public class Element {
 	 * @param height the height of the box
 	 */
 	public void draw(DrawingSurface surface, int x, int y, int width, int height) {
+		draw(surface, x, y, width, height, false);
+	}
+
+	/**
+	 * Returns the atomic number of this element.
+	 * 
+	 * @return the atomic number of this element
+	 */
+	public int getAtomicNumber() {
+		return atomicNumber;
+	}
+
+/**
+	 * Draws this element as a box.
+	 * After this is run, the following surface values may be changed:
+	 * -	fill
+	 * -	strokeWeight
+	 * -	textAlign
+	 * -	textSize
+	 * 
+	 * @param surface
+	 * @param x the x-coordinate of the upper left corner of where to draw
+	 * @param y the y-coordinate of the upper left corner of where to draw
+	 * @param width the width of the box
+	 * @param height the height of the box
+	 * @param highlighted if the box should be highlighted
+	 */
+	public void draw(DrawingSurface surface, int x, int y, int width, int height, boolean highlighted) {
 		
 		/**
 		 * For resizing, numbers are calculated like this: (int)(x+(width/(100.0/50)))
@@ -644,7 +672,11 @@ public class Element {
 			smaller = height;
 		
 		// outer box
-		surface.fill(255);
+		if (highlighted) {
+			surface.fill(253, 255, 50, 200);
+		} else {
+			surface.fill(255);
+		}
 		surface.rect(x, y, width, height);
 		
 		// atomic number
@@ -674,5 +706,5 @@ public class Element {
 		surface.text(str, (int)(x+(width/(100.0/50))), (int)(y+(height/(100.0/87))));
 		
 	}
-	
+
 }
