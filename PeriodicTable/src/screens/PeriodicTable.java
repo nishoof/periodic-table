@@ -24,6 +24,7 @@ public class PeriodicTable extends Screen implements ActionListener {
 	private Button backButton;
 
 	private int highlighted;
+	private StringBuilder highlightedBoxText;
 	
 	
 	/**
@@ -97,7 +98,8 @@ public class PeriodicTable extends Screen implements ActionListener {
 		backButton.setText("<");
 
 		// other
-		highlighted = 6;
+		// highlighted = 6;
+		highlightedBoxText = new StringBuilder("");
 		
 	}
 	
@@ -110,6 +112,8 @@ public class PeriodicTable extends Screen implements ActionListener {
 	 * -	values specified in Element.draw()
 	 */
 	public void draw() {
+
+		System.out.println(highlightedBoxText.toString());
 
 		// updateHighlighted(6);
 		// int highlightCol = (int) highlighted.getX();
@@ -139,7 +143,7 @@ public class PeriodicTable extends Screen implements ActionListener {
 			for (int j = 0; j < ROWS; j++) {
 				Element element = elements[i][j];
 				if (element != null) {
-					element.draw(surface, i*width+x, j*height+y, width, height, element.getAtomicNumber() == highlighted);
+					element.draw(surface, i*width+x, j*height+y, width, height, element.getSymbol().toLowerCase().equals(highlightedBoxText.toString()));
 				}
 			}
 		}
@@ -149,7 +153,7 @@ public class PeriodicTable extends Screen implements ActionListener {
 			for (int j = ROWS; j < ROWS+2; j++) {
 				Element element = elements[i][j];
 				if (element != null) {
-					elements[i][j].draw(surface, i*width+x+x2, j*height+y+y2, width, height, element.getAtomicNumber() == highlighted);
+					elements[i][j].draw(surface, i*width+x+x2, j*height+y+y2, width, height, element.getSymbol().toLowerCase().equals(highlightedBoxText.toString()));
 				}
 			}
 		}
@@ -196,6 +200,26 @@ public class PeriodicTable extends Screen implements ActionListener {
     public void mouseMoved() {
         backButton.mouseMoved(surface.mouseX, surface.mouseY);
     }
+
+	/**
+	 * Called when a key is pressed
+	 * */
+	public void keyPressed() {
+		char key = surface.key;
+		if (key == PConstants.BACKSPACE) {
+			int l = highlightedBoxText.length();
+			if (l > 0) {
+				highlightedBoxText.deleteCharAt(l-1);
+			}
+		} else {
+			key = Character.toLowerCase(key);
+			int ascii = (int) key;
+			if (ascii >= 97 && key <= 122) {
+				highlightedBoxText.append(key);
+			}
+		}
+		
+	}
 
 	/**
      * Invoked when an action occurs.

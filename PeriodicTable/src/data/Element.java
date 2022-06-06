@@ -641,6 +641,15 @@ public class Element {
 		return atomicNumber;
 	}
 
+	/**
+	 * Returns the symbol of this element.
+	 * 
+	 * @return the symbol of this element
+	 */
+	public String getSymbol() {
+		return elementSymbol;
+	}
+
 /**
 	 * Draws this element as a box.
 	 * After this is run, the following surface values may be changed:

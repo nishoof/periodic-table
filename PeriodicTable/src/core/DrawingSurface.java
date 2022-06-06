@@ -51,13 +51,15 @@ public class DrawingSurface extends PApplet {
 	}
 
 	public void mousePressed() {
-
 		currentScreen.mousePressed();
-
 	}
 
 	public void mouseMoved() {
 		currentScreen.mouseMoved();
+	}
+
+	public void keyPressed() {
+		currentScreen.keyPressed();
 	}
 
 	/**
