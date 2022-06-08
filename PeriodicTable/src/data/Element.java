@@ -650,7 +650,16 @@ public class Element {
 		return elementSymbol;
 	}
 
-/**
+	/**
+	 * Returns the name of this element.
+	 * 
+	 * @return the name of this element
+	 */
+	public String getName() {
+		return elementName;
+	}
+
+	/**
 	 * Draws this element as a box.
 	 * After this is run, the following surface values may be changed:
 	 * -	fill

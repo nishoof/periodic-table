@@ -23,7 +23,7 @@ public class PeriodicTable extends Screen implements ActionListener {
 
 	private Button backButton;
 
-	private int highlighted;
+	private Button highlightedField;
 	private StringBuilder highlightedBoxText;
 	
 	
@@ -97,8 +97,8 @@ public class PeriodicTable extends Screen implements ActionListener {
 		backButton.setHoveringOpacity(0);
 		backButton.setText("<");
 
-		// other
-		// highlighted = 6;
+		// highlights
+		highlightedField = new Button(200, 50, 100, 25, this);
 		highlightedBoxText = new StringBuilder("");
 		
 	}
@@ -112,12 +112,6 @@ public class PeriodicTable extends Screen implements ActionListener {
 	 * -	values specified in Element.draw()
 	 */
 	public void draw() {
-
-		System.out.println(highlightedBoxText.toString());
-
-		// updateHighlighted(6);
-		// int highlightCol = (int) highlighted.getX();
-		// int highlightRow = (int) highlighted.getY();
 
 		// width and height of an individual element box 
 		final int width = 53;
@@ -143,7 +137,7 @@ public class PeriodicTable extends Screen implements ActionListener {
 			for (int j = 0; j < ROWS; j++) {
 				Element element = elements[i][j];
 				if (element != null) {
-					element.draw(surface, i*width+x, j*height+y, width, height, element.getSymbol().toLowerCase().equals(highlightedBoxText.toString()));
+					drawElement(element, i*width+x, j*height+y, width, height);
 				}
 			}
 		}
@@ -153,7 +147,7 @@ public class PeriodicTable extends Screen implements ActionListener {
 			for (int j = ROWS; j < ROWS+2; j++) {
 				Element element = elements[i][j];
 				if (element != null) {
-					elements[i][j].draw(surface, i*width+x+x2, j*height+y+y2, width, height, element.getSymbol().toLowerCase().equals(highlightedBoxText.toString()));
+					drawElement(element, i*width+x+x2, j*height+y+y2, width, height);
 				}
 			}
 		}
@@ -173,8 +167,9 @@ public class PeriodicTable extends Screen implements ActionListener {
 		surface.textSize(20);
 		backButton.draw(surface);
 
-
-		// highlight(x + width*highlightCol, y + height*highlightRow, width, height);
+		// highlight
+		System.out.println(highlightedBoxText.toString());
+		highlightedField.draw(surface);
 		
 	}
 	
@@ -210,15 +205,20 @@ public class PeriodicTable extends Screen implements ActionListener {
 			int l = highlightedBoxText.length();
 			if (l > 0) {
 				highlightedBoxText.deleteCharAt(l-1);
+				updateHighlightedFieldText();
 			}
 		} else {
 			key = Character.toLowerCase(key);
 			int ascii = (int) key;
-			if (ascii >= 97 && key <= 122) {
-				highlightedBoxText.append(key);
+			if (ascii >= 97 && key <= 122) {				// lowercase letter a-z
+				if (highlightedBoxText.length() > 0) {
+					highlightedBoxText.append(key);
+				} else {
+					highlightedBoxText.append(Character.toUpperCase(key));
+				}
+				updateHighlightedFieldText();
 			}
 		}
-		
 	}
 
 	/**
@@ -234,27 +234,24 @@ public class PeriodicTable extends Screen implements ActionListener {
         }
     }
 	
-	// private void updateHighlighted(String str) {
-	// 	for (int col = 0; col < COLUMNS; col++) {
-	// 		for (int row = 0; row < ROWS; row++) {
-	// 			Element element = elements[col][row];
-	// 			if (element != null) {
-	// 				if (element.getSymbol().matches(str)) {
-	// 					highlighted = new Point(col, row);
-	// 					// System.out.println(String.format("(%s, %s)", col, row));
-	// 				}
-	// 			}
-	// 		}
-	// 	}
-	// }
+	private void updateHighlightedFieldText() {
+		highlightedField.setText(highlightedBoxText.toString());
+	}
 
-	// private void highlight(int x, int y, int width, int height) {
-	// 	surface.pushStyle();
+	// helper method for drawing the element, mostly with checking if it is highlighted or not
+	private void drawElement(Element element, int x, int y, int width, int height) {
+		
+		String elementName = element.getName().toLowerCase();
+		String elementSymbol = element.getSymbol().toLowerCase();
+		String str = highlightedBoxText.toString().toLowerCase();			// the text entered by the user
+		int strLength = str.length();
 
-	// 	surface.fill(253, 255, 50, 200);
-	// 	surface.rect(x, y, width, height);
+		boolean sameSymbol = elementSymbol.equals(str);
+		boolean sameName = strLength > 2 && strLength <= elementName.length() && str.equals(elementName.substring(0, strLength));				// is a name (not symbol) AND no substring exception AND the first part of the element name matches the input
+		boolean highlighted = sameSymbol || sameName;
 
-	// 	surface.popStyle();
-	// }
+		element.draw(surface, x, y, width, height, highlighted);
+
+	}
 
 }
