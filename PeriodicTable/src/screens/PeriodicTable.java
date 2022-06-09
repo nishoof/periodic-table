@@ -1,10 +1,9 @@
 package screens;
 
 import core.DrawingSurface;
+import data.Elements.Element;
 import nish.processing.Button;
 import processing.core.PConstants;
-
-import data.Element;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
