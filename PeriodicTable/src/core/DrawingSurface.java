@@ -4,6 +4,7 @@ import processing.core.PApplet;
 import screens.Menu;
 import screens.PeriodicTable;
 import screens.Screen;
+import screens.UnitConverter;
 
 /**
  * @author nishoof
@@ -13,16 +14,20 @@ public class DrawingSurface extends PApplet {
 	private Screen currentScreen;				// the current screen being used
 	private Screen menu;						public final static int menuID = 0;
 	private Screen periodicTable;				public final static int periodicTableID = 1;
+	private Screen unitConverter;				public final static int unitConverterID = 2;
 	
 
 	/**
-	 * Constructs a new DrawingSurface
+	 * Constructs a new DrawingSurface, initializing the Screens
 	 */
 	public DrawingSurface() {
+		
 		menu = new Menu(this);
 		periodicTable = new PeriodicTable(this);
+		unitConverter = new UnitConverter(this);
 
 		currentScreen = menu;
+
 	}
 	
 
@@ -71,11 +76,14 @@ public class DrawingSurface extends PApplet {
 	 */
 	public void switchScreen(int screenCode) {
 		switch (screenCode) {
-			case 0:
+			case menuID:
 				currentScreen = menu;
 				break;
-			case 1:
+			case periodicTableID:
 				currentScreen = periodicTable;
+				break;
+			case unitConverterID:
+				currentScreen = unitConverter;
 				break;
 		}
 	}

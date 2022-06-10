@@ -167,7 +167,6 @@ public class PeriodicTable extends Screen implements ActionListener {
 		backButton.draw(surface);
 
 		// highlight
-		System.out.println(highlightedBoxText.toString());
 		highlightedField.draw(surface);
 		
 	}

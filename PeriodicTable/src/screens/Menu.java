@@ -12,8 +12,9 @@ import java.awt.event.ActionListener;
  */
 public class Menu extends Screen implements ActionListener {
 
-    private Button button;
-    private boolean buttonHovered;
+    private Button[] buttons;
+    private Button periodicTableButton;
+    private Button unitConverterButton;
 
     /**
      * Constructs a new Menu Screen.
@@ -24,10 +25,19 @@ public class Menu extends Screen implements ActionListener {
         
         super(surface);             // stores the DrawingSurface to use in a public final field in the superclass (Screen)
 
-        button = new Button(500, 300, 150, 50, this);             // creates a new Button at (500, 300) with a width of 150 and height of 50 (in pixels)
-        button.setAnchor(0.5, 0.5);                         // makes the Button use it's position as the center of the Button instead of the top-left
-        button.setRounding(10);                             // rounds the edge of the Button
-        button.setText("View Periodic Table");                            // adds a message to the center of the Button
+        periodicTableButton = new Button(500, 300, 150, 50, this);
+        periodicTableButton.setAnchor(0.5, 0.5);                                // makes the Button use it's position as the center of the Button instead of the top-left
+        periodicTableButton.setRounding(10);
+        periodicTableButton.setText("Periodic Table");
+        periodicTableButton.setHoverFill(240);
+
+        unitConverterButton = new Button(500, 400, 150, 50, this);
+        unitConverterButton.setAnchor(0.5, 0.5);                                // makes the Button use it's position as the center of the Button instead of the top-left
+        unitConverterButton.setRounding(10);
+        unitConverterButton.setText("Unit Converter");
+        unitConverterButton.setHoverFill(240);
+
+        buttons = new Button[]{periodicTableButton, unitConverterButton};
         
     }
 
@@ -39,26 +49,28 @@ public class Menu extends Screen implements ActionListener {
 
         surface.background(255);                // clears anything that was drawn in the previous frame
 
-        growOnHover(button, buttonHovered);   
-
-        surface.textSize((int)button.getSize().getX()/9);
-        button.draw(surface);
-
+        surface.textSize(20);
+        periodicTableButton.draw(surface);
+        unitConverterButton.draw(surface);
 
     }
 
     /**
-     * Called once after every time a mouse button is pressed.
+     * Called once after every time a mouse periodicTableButton is pressed.
      */
     public void mousePressed() {
-        button.mousePressed(surface.mouseX, surface.mouseY, surface.mouseButton);
+        for (Button button: buttons) {
+            button.mousePressed(surface.mouseX, surface.mouseY, surface.mouseButton);
+        }
     }
 
     /**
-     * Called every time the mouse moves and a mouse button is not pressed.
+     * Called every time the mouse moves and a mouse periodicTableButton is not pressed.
      */
     public void mouseMoved() {
-        button.mouseMoved(surface.mouseX, surface.mouseY);
+        for (Button button: buttons) {
+            button.mouseMoved(surface.mouseX, surface.mouseY);
+        }
     }
 
     /**
@@ -67,29 +79,15 @@ public class Menu extends Screen implements ActionListener {
      * @param actionEvent the ActionEvent representing the action that occurred
      */
     public void actionPerformed(ActionEvent actionEvent) {
-        if (actionEvent.getSource().equals(button)) {
+        if (actionEvent.getSource().equals(periodicTableButton)) {
             if (actionEvent.getID() == Button.LEFT_CLICK) {
                 surface.switchScreen(DrawingSurface.periodicTableID);
-            } else if (actionEvent.getID() == Button.HOVER) {
-                buttonHovered = true;
-            } else if (actionEvent.getID() == Button.UNHOVER) {
-                buttonHovered = false;
             }
-        }
-    }
-
-    private void growOnHover(Button button, boolean buttonHovered) {
-        int sizeX = (int)(button.getSize().getX());
-        if (buttonHovered) {
-            if (sizeX < 165) {
-                button.grow(3, 1);
-            }
-        } else {
-            if (sizeX > 150) {
-                button.grow(-3, -1);
+        } else if (actionEvent.getSource().equals(unitConverterButton)) {
+            if (actionEvent.getID() == Button.LEFT_CLICK) {
+                surface.switchScreen(DrawingSurface.unitConverterID);
             }
         }
     }
 
 }
-
