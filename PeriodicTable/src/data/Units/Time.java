@@ -6,16 +6,49 @@ public class Time extends Unit {
 
     // units for Time are allowed to range from 100-199 (inclusive)
 
+    /**
+     * Unit identifier for a nanosecond
+     */
     public static final int nanosecond = 100;
+    /**
+     * Unit identifier for a microsecond
+     */
     public static final int microsecond = 101;
+    /**
+     * Unit identifier for a millisecond
+     */
     public static final int millisecond = 102;
+    /**
+     * Unit identifier for a second
+     */
     public static final int second = 103;
+    /**
+     * Unit identifier for a minute
+     */
     public static final int minute = 104;
+    /**
+     * Unit identifier for an hour
+     */
     public static final int hour = 105;
+    /**
+     * Unit identifier for a day (24 hours)
+     */
     public static final int day = 106;
+    /**
+     * Unit identifier for a week (7 days)
+     */
     public static final int week = 107;
+    /**
+     * Unit identifier for a month (30 days)
+     */
     public static final int month = 108;
+    /**
+     * Unit identifier for a common year (365 days)
+     */
     public static final int commonYear = 109;
+    /**
+     * Unit identifier for a leap year (366 days)
+     */
     public static final int leapYear = 110;
 
     private static final double[] ratios = new double[]{
