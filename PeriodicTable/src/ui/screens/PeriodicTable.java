@@ -4,6 +4,7 @@ import core.DrawingSurface;
 import data.Element;
 import processing.core.PConstants;
 import ui.element.Button;
+import ui.element.TextButton;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,8 +23,7 @@ public class PeriodicTable extends Screen implements ActionListener {
 
 	private Button backButton;
 
-	private Button highlightedField;
-	private StringBuilder highlightedBoxText;
+	private TextButton highlightedField;
 	
 	
 	/**
@@ -97,8 +97,7 @@ public class PeriodicTable extends Screen implements ActionListener {
 		backButton.text = "<";
 
 		// highlights
-		highlightedField = new Button(200, 50, 100, 25, this);
-		highlightedBoxText = new StringBuilder("");
+		highlightedField = new TextButton(200, 50, 100, 25, 20, this);
 		
 	}
 	
@@ -185,6 +184,7 @@ public class PeriodicTable extends Screen implements ActionListener {
      */
     public void mousePressed() {
         backButton.mousePressed(surface.mouseX, surface.mouseY, surface.mouseButton);
+		highlightedField.mousePressed(surface.mouseX, surface.mouseY, surface.mouseButton);
     }
 
     /**
@@ -198,25 +198,7 @@ public class PeriodicTable extends Screen implements ActionListener {
 	 * Called when a key is pressed
 	 */
 	public void keyPressed() {
-		char key = surface.key;
-		if (key == PConstants.BACKSPACE) {
-			int l = highlightedBoxText.length();
-			if (l > 0) {
-				highlightedBoxText.deleteCharAt(l-1);
-				updateHighlightedFieldText();
-			}
-		} else {
-			key = Character.toLowerCase(key);
-			int ascii = (int) key;
-			if (ascii >= 97 && key <= 122) {				// lowercase letter a-z
-				if (highlightedBoxText.length() > 0) {
-					highlightedBoxText.append(key);
-				} else {
-					highlightedBoxText.append(Character.toUpperCase(key));
-				}
-				updateHighlightedFieldText();
-			}
-		}
+		highlightedField.keyPressed(surface);
 	}
 
 	/**
@@ -232,16 +214,16 @@ public class PeriodicTable extends Screen implements ActionListener {
         }
     }
 	
-	private void updateHighlightedFieldText() {
-		highlightedField.text = highlightedBoxText.toString();
-	}
+	// private void updateHighlightedFieldText() {
+	// 	highlightedField.text = highlightedBoxText.toString();
+	// }
 
 	// helper method for drawing the element, mostly with checking if it is highlighted or not
 	private void drawElement(Element element, int x, int y, int width, int height) {
 		
 		String elementName = element.getName().toLowerCase();
 		String elementSymbol = element.getSymbol().toLowerCase();
-		String str = highlightedBoxText.toString().toLowerCase();			// the text entered by the user
+		String str = highlightedField.text.toString().toLowerCase();			// the text entered by the user
 		int strLength = str.length();
 
 		boolean sameSymbol = elementSymbol.equals(str);

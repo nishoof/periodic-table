@@ -16,6 +16,8 @@ import java.awt.event.*;
  */
 public class TextButton extends Button {
 
+    public StringBuffer text;
+
     private boolean selected;
     private boolean cursorVisible;
     private int i;
@@ -23,16 +25,17 @@ public class TextButton extends Button {
 
     private int textSize;
 
-    private StringBuffer text;
 
     public TextButton(int x, int y, int width, int height, int textSize) {
         super(x, y, width, height);
         this.textSize = textSize;
+        this.text = new StringBuffer("");
     }
 
     public TextButton(int x, int y, int width, int height, int textSize, ActionListener actionListener) {
         super(x, y, width, height, actionListener);
         this.textSize = textSize;
+        this.text = new StringBuffer("");
     }
 
 
@@ -50,10 +53,12 @@ public class TextButton extends Button {
      */
     public void draw(PApplet surface) {
 
-        System.out.println(cursorIndex);
+        // System.out.println(cursorIndex);
+
+        String textStr = text.toString();
+        super.text = textStr;
 
         surface.textSize(textSize);
-
         super.draw(surface);
 
         if (selected) {
@@ -66,10 +71,11 @@ public class TextButton extends Button {
 
             if (cursorVisible) {
 
-                String textStr = text.toString();
+                surface.fill(0);
+                surface.stroke(0);
 
                 float xOffset, space, letters;
-                space = (x - surface.textWidth(textStr)) / 2;
+                space = (this.width - surface.textWidth(textStr)) / 2;
                 if (cursorIndex == 0) {
                     letters = 0;
                 } else {
@@ -81,12 +87,16 @@ public class TextButton extends Button {
                 }
                 xOffset = space + letters;
 
-
-                int x = (int)(this.x - (int)(anchorX*this.x) + xOffset + textOffsetX);
-                int y = this.x - (int)(anchorY*this.x) + this.x/2 - textSize/2;
+                // System.out.println(space + "         " + letters);
+                // System.out.println("." + textStr + ".");
+                
+                int x = (int)(this.x - (int)(anchorX*this.width) + xOffset + textOffsetX);
+                int y = this.y - (int)(anchorY*this.height) + this.height/2 - textSize/2;
+                System.out.println(space);
                 surface.line(x, y, x, y+textSize);
             }
         }
+
 
     }
 
@@ -159,7 +169,7 @@ public class TextButton extends Button {
                 // } else {
                 //     setText(text.substring(0, cursorIndex-1) + text.substring(cursorIndex, length));
                 // }
-                this.text.deleteCharAt(cursorIndex);
+                this.text.deleteCharAt(cursorIndex-1);
                 cursorIndex -= 1;
 			}
 		} else {
