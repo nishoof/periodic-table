@@ -1,10 +1,10 @@
 package core;
 
 import processing.core.PApplet;
-import screens.Menu;
-import screens.PeriodicTable;
-import screens.Screen;
-import screens.UnitConverter;
+import ui.screens.Menu;
+import ui.screens.PeriodicTable;
+import ui.screens.Screen;
+import ui.screens.UnitConverter;
 
 /**
  * @author nishoof

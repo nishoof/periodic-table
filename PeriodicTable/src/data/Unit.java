@@ -1,4 +1,4 @@
-package data.Units;
+package data;
 
 public class Unit {
 

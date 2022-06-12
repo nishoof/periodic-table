@@ -1,7 +1,7 @@
-package screens;
+package ui.screens;
 
 import core.DrawingSurface;
-import data.Elements.Element;
+import data.Element;
 import nish.processing.Button;
 import processing.core.PConstants;
 
@@ -196,7 +196,7 @@ public class PeriodicTable extends Screen implements ActionListener {
 
 	/**
 	 * Called when a key is pressed
-	 * */
+	 */
 	public void keyPressed() {
 		char key = surface.key;
 		if (key == PConstants.BACKSPACE) {

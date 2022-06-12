@@ -1,4 +1,4 @@
-package data.Elements;
+package data;
 
 import core.DrawingSurface;
 import processing.core.PConstants;
