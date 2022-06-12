@@ -466,7 +466,8 @@ public class Button {
 
 
 
-
+    // [OLD METHODS]
+    // NEVER USED SO THEY'RE JUST COMMENTED OUT
 
     // /**
     //  * Sets if this Button is active.
