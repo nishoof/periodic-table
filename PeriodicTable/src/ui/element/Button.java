@@ -34,17 +34,14 @@ public class Button {
      * The ActionEvent id when this Button is left-clicked.
      */
     public static final int LEFT_CLICK = 0;
-
     /**
      * The ActionEvent id when this Button is right-clicked.
      */
     public static final int RIGHT_CLICK = 1;
-
     /**
      * The ActionEvent id when this Button is now being hovered (mouse is on the Button).
      */
     public static final int HOVER = 2;
-
     /**
      * The ActionEvent id when this Button is no longer being hovered (mouse is off the Button).
      */
@@ -52,28 +49,70 @@ public class Button {
     
 
 
-    private int x;
-    private int y;
-    private int width;
-    private int height;
+    /**
+     * x-coordinate of this Button.
+     */
+    public int x;
+    /**
+     * y-coordinate of this Button.
+     */
+    public int y;
+    /**
+     * Width of this Button (horizontal length in pixels).
+     */
+    public int width;
+    /**
+     * Height of this Button (vertical length in pixels).
+     */
+    public int height;
 
-    private double anchorX;
-    private double anchorY;
+    /**
+     * Anchor points are used as an offset of where to draw from.
+     * <br> For example, if the anchor points (anchorX, anchorY) are (0, 0), this Button will be drawn from the upper left corner.
+     * <br> If the anchor points are (0.5, 0.5), this Button will be drawing from the middle.
+     */
+    public double anchorX;
+    /**
+     * Anchor points are used as an offset of where to draw from.
+     * <br> For example, if the anchor points (anchorX, anchorY) are (0, 0), this Button will be drawn from the upper left corner.
+     * <br> If the anchor points are (0.5, 0.5), this Button will be drawing from the middle.
+     */
+    public double anchorY;
 
-    private int cornerRounding;
+    /**
+     * The text to show on this Button.
+     * <br> Null by default (not shown).
+     */
+    public String text;
+    public int textOffsetX;
+    public int textOffsetY;
+
+    public int cornerRounding;
+
+    /**
+     * The strokeWeight is the width of the stroke used for the border around the Button.
+     * <br> 1 by default.
+     */
+    public int strokeWeight;
+    /**
+     * How transparent the fill is.
+     * <br> Ranges from 0 (fully transparent) to 255 (no transparency).
+     * <br> 255 by default.
+     */
+    public float opacity;
+    /**
+     * How transparent the fill is when the Button is being hovered.
+     * <br> Ranges from 0 (fully transparent) to 255 (no transparency).
+     * <br> 255 by default.
+     */
+    public float hoveringOpacity;
+
+    protected ArrayList<ActionListener> listening;
+
     private int fill;
     private float fillr, fillg, fillb;
     private int hoverFill;
     private float hoverFillr, hoverFillg, hoverFillb;
-    private int strokeWeight;
-    private float opacity;
-    private float hoveringOpacity;
-
-    private String text;
-    private int textOffsetX;
-    private int textOffsetY;
-
-    protected ArrayList<ActionListener> listening;
 
     private boolean hovering;
 
@@ -167,57 +206,6 @@ public class Button {
 
     }
 
-    /**
-     * Sets the anchor points of this Button.
-     * <br> Anchor points are used as an offset of where to draw from.
-     * <br> For example, if the anchor points (x, y) are (0, 0), this Button will be drawn from the upper left corner.
-     * <br> If the anchor points are (0.5, 0.5), this Button will be drawing from the middle.
-     * 
-     * @param anchorX new x-coordinate for the anchor
-     * @param anchorY new y-coordiante for the anchor
-     */
-    public void setAnchor(double anchorX, double anchorY) {
-        this.anchorX = anchorX;
-        this.anchorY = anchorY;
-    }
-
-    /**
-     * Returns the x-coordinate of the anchor point of this Button.
-     * 
-     * @return the x-coordinate of the anchor point of this Button
-     */
-    public double getAnchorX() {
-        return anchorX;
-    }
-
-    /**
-     * Returns the y-coordinate of the anchor point of this Button.
-     * 
-     * @return the y-coordinate of the anchor point of this Button
-     */
-    public double getAnchorY() {
-        return anchorY;
-    }
-
-    /**
-     * Changes how rounded the corners are.
-     * <br> 0 by default.
-     * 
-     * @param cornerRounding new value for how rounded the corners are
-     */
-    public void setRounding(int cornerRounding) {
-        this.cornerRounding = cornerRounding;
-    }
-
-    /**
-     * Returns how rounded the corners are.
-     * 
-     * @return how rounded the corners are
-     */
-    public int getRounding() {
-        return this.cornerRounding;
-    }
-
      /**
      * Changes the hoverFill value for this Button (fill when it is being hovered).
      * <br> 255 by default.
@@ -247,79 +235,7 @@ public class Button {
         hoverFill = -1;
     }
 
-    /**
-     * Sets the strokeWeight of this Button to strokeWeight.
-     * <br> The strokeWeight is the width of the stroke used for the border around the Button.
-     * <br> 1 by default.
-     *  
-     * @param strokeWeight new strokeWeight for this Button
-     */
-    public void setStrokeWeight(int strokeWeight) {
-        this.strokeWeight = strokeWeight;
-    }
-
-    /**
-     * Returns the strokeWeight of this Button.
-     * <br> The strokeWeight is the width of the stroke used for the border around the Button.
-     *  
-     * @return the strokeWeight of this Button
-     */
-    public int getStrokeWeight() {
-        return strokeWeight;
-    }
-
-    /**
-     * Sets the opacity of this Button (how transparent it is) to opacity.
-     * <br> Ranges from 0 (fully transparent) to 255 (no transparency).
-     * <br> 255 by default.
-     * 
-     * @param opacity new opacity for this Button
-     */
-    public void setOpacity(float opacity) {
-        this.opacity = opacity;
-    }
-
-    /**
-     * Returns the opacity of this Button (how transparent it is).
-     * 
-     * @return the opacity of this Button (how transparent it is)
-     */
-    public float getOpacity() {
-        return opacity;
-    }
-
-    /**
-     * Sets the hoveringOpacity of this Button (how transparent it is) to hoveringOpacity.
-     * <br> Ranges from 0 (fully transparent) to 255 (no transparency).
-     * <br> 255 by default.
-     * 
-     * @param hoveringOpacity new hoveringOpacity for this Button
-     */
-    public void setHoveringOpacity(float hoveringOpacity) {
-        this.hoveringOpacity = hoveringOpacity;
-    }
-
-    /**
-     * Sets the text of this Button to text.
-     * <br> Null by default (not shown).
-     * 
-     * @param text new text for this Button
-     */
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    /**
-     * Returns the text of this Button.
-     * 
-     * @return the text of this Button
-     */
-    public String getText() {
-        return text;
-    }
-
     
-
     /**
      * Should be called whenever the mouse is pressed.
      * <br> Used for checking if this Button was clicked.

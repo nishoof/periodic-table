@@ -26,15 +26,17 @@ public class Menu extends Screen implements ActionListener {
         super(surface);             // stores the DrawingSurface to use in a public final field in the superclass (Screen)
 
         periodicTableButton = new Button(500, 300, 150, 50, this);
-        periodicTableButton.setAnchor(0.5, 0.5);                                // makes the Button use it's position as the center of the Button instead of the top-left
-        periodicTableButton.setRounding(10);
-        periodicTableButton.setText("Periodic Table");
+        periodicTableButton.anchorX = 0.5;                                // anchor points make the Button use it's position as the center of the Button instead of the top-left
+        periodicTableButton.anchorY = 0.5;
+        periodicTableButton.cornerRounding = 10;
+        periodicTableButton.text = "Periodic Table";
         periodicTableButton.setHoverFill(240);
 
         unitConverterButton = new Button(500, 400, 150, 50, this);
-        unitConverterButton.setAnchor(0.5, 0.5);                                // makes the Button use it's position as the center of the Button instead of the top-left
-        unitConverterButton.setRounding(10);
-        unitConverterButton.setText("Unit Converter");
+        unitConverterButton.anchorX = 0.5;                                // anchor points make the Button use it's position as the center of the Button instead of the top-left
+        unitConverterButton.anchorY = 0.5;
+        unitConverterButton.cornerRounding = 10;
+        unitConverterButton.text = "Unit Converter";
         unitConverterButton.setHoverFill(240);
 
         buttons = new Button[]{periodicTableButton, unitConverterButton};

@@ -91,10 +91,10 @@ public class PeriodicTable extends Screen implements ActionListener {
 
 		// back Button
 		backButton = new Button(0, 550, 50, 50, this);
-		backButton.setStrokeWeight(0);
-		backButton.setOpacity(0);
-		backButton.setHoveringOpacity(0);
-		backButton.setText("<");
+		backButton.strokeWeight = 0;
+		backButton.opacity = 0;
+		backButton.hoveringOpacity = 0;
+		backButton.text = "<";
 
 		// highlights
 		highlightedField = new Button(200, 50, 100, 25, this);
@@ -233,7 +233,7 @@ public class PeriodicTable extends Screen implements ActionListener {
     }
 	
 	private void updateHighlightedFieldText() {
-		highlightedField.setText(highlightedBoxText.toString());
+		highlightedField.text = highlightedBoxText.toString();
 	}
 
 	// helper method for drawing the element, mostly with checking if it is highlighted or not
