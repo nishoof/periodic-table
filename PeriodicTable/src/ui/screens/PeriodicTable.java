@@ -3,8 +3,8 @@ package ui.screens;
 import core.DrawingSurface;
 import data.Element;
 import processing.core.PConstants;
-import ui.element.Button;
-import ui.element.TextButton;
+import nish.processing.Button;
+import nish.processing.TextButton;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -98,6 +98,7 @@ public class PeriodicTable extends Screen implements ActionListener {
 
 		// highlights
 		highlightedField = new TextButton(200, 50, 100, 25, 20, this);
+		highlightedField.setHoverFill(240);
 		
 	}
 	
@@ -184,7 +185,7 @@ public class PeriodicTable extends Screen implements ActionListener {
      */
     public void mousePressed() {
         backButton.mousePressed(surface.mouseX, surface.mouseY, surface.mouseButton);
-		highlightedField.mousePressed(surface.mouseX, surface.mouseY, surface.mouseButton);
+		highlightedField.mousePressed(surface);
     }
 
     /**
@@ -192,6 +193,7 @@ public class PeriodicTable extends Screen implements ActionListener {
      */
     public void mouseMoved() {
         backButton.mouseMoved(surface.mouseX, surface.mouseY);
+		highlightedField.mouseMoved(surface.mouseX, surface.mouseY);
     }
 
 	/**
@@ -213,10 +215,6 @@ public class PeriodicTable extends Screen implements ActionListener {
             }
         }
     }
-	
-	// private void updateHighlightedFieldText() {
-	// 	highlightedField.text = highlightedBoxText.toString();
-	// }
 
 	// helper method for drawing the element, mostly with checking if it is highlighted or not
 	private void drawElement(Element element, int x, int y, int width, int height) {

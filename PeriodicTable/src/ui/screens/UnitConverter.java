@@ -1,7 +1,7 @@
 package ui.screens;
 
 import core.DrawingSurface;
-import ui.element.Button;
+import nish.processing.Button;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
